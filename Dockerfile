@@ -8,4 +8,4 @@ RUN npm run build
 
 FROM nginx:1.23.3
 COPY --from=node /app/dist/market-ui /usr/share/nginx/html
-EXPOSE 4200
+EXPOSE 80
