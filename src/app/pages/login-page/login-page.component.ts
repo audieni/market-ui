@@ -14,7 +14,10 @@ export class LoginPageComponent {
     password: new UntypedFormControl('')
   });
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) { }
 
   onSubmit(): void {
     this.userService.login(

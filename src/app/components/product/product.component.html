@@ -3,6 +3,6 @@
         <img [src]="product.image" [alt]="product.name" width="75px" height="100%" />
         <div>{{product.name}}</div>
         <div>{{product.price | currency}}</div>
-        <button class="btn btn-outline-dark my-1">Add to Cart</button>
+        <button class="btn btn-outline-dark my-1" (click)="addToCart(product)">Add to Cart</button>
     </div>
 </div>

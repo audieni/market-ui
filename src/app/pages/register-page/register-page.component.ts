@@ -15,7 +15,10 @@ export class RegisterPageComponent {
     country: new UntypedFormControl('')
   });
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) { }
 
   onSubmit(): void {
     this.userService.register(
