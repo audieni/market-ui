@@ -3,7 +3,7 @@
     <div class="row text-center">
         <h2 *ngIf="!loggedIn">You're not logged in...</h2>
         <div class="col-3" *ngFor="let product of products">
-            <app-product *ngIf="!loggedIn" [product]="product"></app-product>
+            <app-product *ngIf="loggedIn" [product]="product"></app-product>
         </div>
     </div>
 </div>
