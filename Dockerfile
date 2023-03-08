@@ -1,4 +1,5 @@
 FROM node:18.14.2
-WORKDIR /
-RUN npm install
-ENTRYPOINT [ "ng", "serve" ]
+WORKDIR /app
+COPY ./ /app
+RUN npm install --force
+ENTRYPOINT [ "npm", "run", "start" ]
