@@ -1,1 +1,25 @@
-<p>order works!</p>
+<div class="row">
+    <div class="card col-15 my-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4 fw-bold">Order ID</div>
+                <div class="col-4 fw-bold">Number of Items</div>
+                <div class="col-4 fw-bold">Total Price</div>
+            </div>
+            <div class="row">
+                <div class="col-4">{{order.orderId}}</div>
+                <div class="col-4">{{count}}</div>
+                <div class="col-4">{{totalPrice | currency}}</div>
+            </div>
+            <hr>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3" *ngFor="let orderProduct of orderProducts">
+                    <img [src]="orderProduct.productImage" [alt]="orderProduct.productName" width="100px"
+                        height="100%" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

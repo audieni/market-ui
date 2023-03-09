@@ -1,6 +1,11 @@
 <app-navbar></app-navbar>
 <div class="container py-5">
     <div class="row text-center">
-        <p>order-page works!</p>
+        <h2 *ngIf="!loggedIn">You're not logged in...</h2>
+        <div *ngIf="loggedIn">
+            <div *ngFor="let order of orders">
+                <app-order [order]="order"></app-order>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
-import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 import { Cart } from 'src/app/models/Cart';
-import { Product } from 'src/app/models/Product';
+import { OrderService } from 'src/app/services/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-page',
@@ -13,35 +13,41 @@ import { Product } from 'src/app/models/Product';
 export class CartPageComponent {
   loggedIn: boolean = this.userService.loggedIn;
   carts: Cart[] = [];
-  products: Product[] = [];
+  totalPrice: number = 0;
 
   constructor(
     private userService: UserService,
-    private productService: ProductService,
-    private cartService: CartService
+    private cartService: CartService,
+    private orderService: OrderService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.productService.findAllProducts().subscribe(
-      {
-        next: (data) => {
-          this.products = data;
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      }
-    );
-
-    this.cartService.getCart().subscribe(
+    this.cartService.findCart().subscribe(
       {
         next: (data) => {
           this.carts = data;
+          this.carts.forEach((cart) => {
+            this.totalPrice += cart.productPrice;
+          })
         },
         error: (err) => {
           console.log(err);
         }
       }
     );
+  }
+
+  addOrder(): void {
+    this.orderService.addOrder().subscribe(
+      {
+        error: (err) => {
+          console.log(err);
+        },
+        complete: () => {
+          this.router.navigate(['orders']);
+        }
+      }
+    )
   }
 }

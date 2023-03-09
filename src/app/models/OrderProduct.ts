@@ -1,6 +1,6 @@
-export interface Cart {
-    cartId?: number | null;
-    userId?: number | null;
+export interface OrderProduct {
+    orderProductId?: number | null;
+    orderId?: number | null;
     productId?: number | null;
     stock?: number | null;
     productName?: string | null;

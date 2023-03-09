@@ -12,7 +12,7 @@ export class CartService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getCart(): Observable<any> {
+  public findCart(): Observable<any> {
     return this.httpClient.get<any>(`${this.url}`,
       {headers: environment.headers, withCredentials: environment.withCredentials});
   }
